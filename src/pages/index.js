@@ -90,7 +90,7 @@ export default function Home() {
                   className="!text-5xl"
                 />
                 <AnimatedText
-                  text=" shaping tomorrow's reality, today and beyond"
+                  text=" shaping tomorrow&apos;s reality, today and beyond"
                   className="!text-base  "
                 />
               </h1>
@@ -101,7 +101,7 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 1 }}
               >
-                I'm passionate about writing code that brings ideas to life,
+                I&apos;m passionate about writing code that brings ideas to life,
                 creating practical solutions that captivate users and appeal to
                 customers.
               </motion.p>
