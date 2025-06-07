@@ -38,8 +38,7 @@ const Experience = () => {
                     style={{scaleY:scrollYProgress}}
         />
             <ul className='w-full flex flex-col items-start jsutify-between ml-4 '>
-                <Detail position={"Python Developer | Software Engineer"} company={'Fiver'}  companyLink='https://www.fiverr.com/users/avinashchugh/manage_gigs/be-a-database-coding-programming-and-scripting-python-bot-project/edit' time={'2023-Present'} address={'Pakistan'} work={"Collaborated with clients to develop new features, enhance the accuracy and relevance of project outcomes, and create innovative tools for data analysis and visualization."} />
-               
+                <Detail position={"Python Developer | Software Engineer"} company={'BitsWits'}  companyLink='https://www.bitswits.com/' time={'2025-Present'} address={'Karachi, Pakistan'} work={"Collaborated with clients to develop new features, enhance the accuracy and relevance of project outcomes, and create innovative tools for data analysis and visualization."} />
              </ul>
              
         </div>

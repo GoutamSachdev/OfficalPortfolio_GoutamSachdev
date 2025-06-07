@@ -43,7 +43,7 @@ const About = () => {
           content="@GoutamSachdev Portfolio Computer Science"
         />
       </Head>
-      <main className="flex w-full flex-col items-center justify-center">
+      <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="pt-10">
           <AnimatedText
             className="!text-5xl m-16"
