@@ -1,14 +1,14 @@
 import AnimatedText from '@/components/AnimatedText'
 import Layout from '@/components/Layout'
-import Head from 'next/head'
+import Seo from '@/components/Seo'
 import Image from 'next/image'
 import Skill from '@/components/Skill'
 import React, { useEffect, useRef } from 'react'
 import profilepic from '../../public/images/profile/Profile.jpg'
-import { animated } from 'react-spring';
 import { useInView, useMotionValue, useSpring } from 'framer-motion'
 import Experience from '@/components/Experience'
 import Education from '@/components/Education'
+import Certifications from '@/components/Certifications'
 
 const AnimateNo = ({ value }) => {
   const ref = useRef(null)
@@ -36,65 +36,59 @@ const AnimateNo = ({ value }) => {
 const About = () => {
   return (
     <>
-      <Head>
-        <title>Goutam Sachdev | About Page</title>
-        <meta
-          name="description"
-          content="@GoutamSachdev Portfolio Computer Science"
-        />
-      </Head>
-      <main className="flex w-full flex-col items-center justify-center dark:text-light">
+      <Seo
+        title="About"
+        description="About Goutam Sachdev — an AI Software Engineer with 2 years building production AI: LLM chatbots, agentic automation, RAG systems, and computer-vision apps in Python, FastAPI, Django, LangChain, and Next.js."
+        path="/about"
+      />
+      <main id="content" className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="pt-10">
           <AnimatedText
-            className="!text-5xl m-16"
+            className="!text-3xl sm:!text-5xl md:!text-6xl my-6 sm:my-12"
             text={"Enthusiasm drives a meaningful purpose!"}
           />
-          <div className="grid w-full grid-cols-8 gap-16">
-            <div className="col-span-3 flex flex-col items-start justify-normal">
-              <h2 className="mb-5 text-lg font-bold uppercase text-dark/75">
+          <div className="grid w-full grid-cols-1 md:grid-cols-8 gap-8 md:gap-12">
+            <div className="md:col-span-3 flex flex-col items-start justify-normal order-2 md:order-1">
+              <h2 className="mb-5 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
                 Personal narrative
               </h2>
-              <p className="text-xs my-4 font-bold">
-                Hey there, I am Goutam, your go-to Python Developer and Software Engineer embarking on an exhilarating tech journey. With an unwavering zest for innovation, I&apos;ve navigated the realms of coding and design throughout my academic and professional ventures. Armed with a strong foundation in Computer Science from Sukkur IBA University, I&apos;ve honed my skills in languages like Java and Python, fueling my passion for crafting digital masterpieces.
+              <p className="text-sm my-4 font-medium">
+                I&apos;m Goutam Sachdev, an AI Software Engineer with 2 years building production AI — LLM-powered chatbots, agentic automation, RAG systems, and computer-vision apps. With a strong foundation in Computer Science from Sukkur IBA University, I work across the stack in Python, FastAPI, Django, LangChain, LangGraph, and Next.js to ship systems that cut support workload, speed up workflows, and reduce operational cost.
               </p>
-              <p className="text-xs my-4 font-bold">
-                It&apos;s about solving problems and creating intuitive, enjoyable experiences for users. I use Django-Flask and React-Javascript to create user-friendly digital experiences by merging functionality with aesthetics.
+              <p className="text-sm my-4 font-medium">
+                It&apos;s about solving real problems and creating intuitive, enjoyable experiences. I blend AI with solid backend engineering and a frontend built in React and Next.js, merging functionality with aesthetics.
               </p>
-              <p className="text-xs my-4 font-bold">
-                Whether it&apos;s a website, a mobile app, or any digital project, my commitment to design excellence and user-centered thinking shines through in every endeavor. I eagerly anticipate the chance to contribute my skills and passion to your upcoming project.
+              <p className="text-sm my-4 font-medium">
+                Whether it&apos;s a voice agent, a retrieval system, or a full AI web app, my commitment to design excellence and user-centered thinking shows in every project. I&apos;m always up for the next ambitious build.
               </p>
             </div>
-            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8">
-              <div className="absolute top-0 -right-3 -z-10 w-[104%] h-[104%] rounded-2xl bg-dark" />
-              <Image src={profilepic} alt="@goutamsachdev" className="w-full h-full rounded-2xl" />
+            <div className="md:col-span-3 relative h-max rounded-2xl border border-solid border-line bg-light p-2 shadow-card hover:shadow-cardHover transition-shadow duration-300 dark:bg-dark dark:border-lineDark order-1 md:order-2">
+              <Image src={profilepic} alt="Goutam Sachdev working on AI development" className="w-full h-full rounded-xl" />
             </div>
 
-            <div className="col-span-2 flex flex-col items-end justify-between">
-              <div className="flex flex-col items-end justify-center">
-                <span className="inline-block text-5xl font-bold text-dark/75">
-                  <AnimateNo value={50} />+
+            <div className="md:col-span-2 flex flex-col items-start md:items-end justify-between gap-8 md:gap-0 order-3">
+              <div className="flex flex-col items-start md:items-end justify-center" aria-label="2+ years of experience">
+                <span className="inline-block text-4xl sm:text-5xl font-bold text-dark/75 dark:text-light/75">
+                  <AnimateNo value={2} />+
                 </span>
-                <h2 className="text-lg font-medium capitalize">
-                  Project
-                </h2>
-                <h2 className="text-lg font-medium capitalize text-dark/75">
-                  Satisfied Completed
+                <h2 className="text-lg font-medium capitalize text-dark/75 dark:text-light/75">
+                  Years Experience
                 </h2>
               </div>
-              <div className="flex flex-col items-end justify-center">
-                <span className="inline-block text-5xl font-bold text-dark/75">
-                  <AnimateNo value={20} />+
+              <div className="flex flex-col items-start md:items-end justify-center" aria-label="10+ AI projects shipped">
+                <span className="inline-block text-4xl sm:text-5xl font-bold text-dark/75 dark:text-light/75">
+                  <AnimateNo value={10} />+
                 </span>
-                <h2 className="text-lg font-medium capitalize text-dark/75">
-                  Satisfied Clients
+                <h2 className="text-lg font-medium capitalize text-dark/75 dark:text-light/75">
+                  AI Projects
                 </h2>
               </div>
-              <div className="flex flex-col items-end justify-center">
-                <span className="inline-block text-5xl font-bold text-dark/75">
-                  <AnimateNo value={1} />+
+              <div className="flex flex-col items-start md:items-end justify-center" aria-label="7+ certifications earned">
+                <span className="inline-block text-4xl sm:text-5xl font-bold text-dark dark:text-light">
+                  <AnimateNo value={7} />+
                 </span>
-                <h2 className="text-lg font-medium capitalize text-dark">
-                  Year Experienced
+                <h2 className="text-lg font-medium capitalize text-dark dark:text-light">
+                  Certifications
                 </h2>
               </div>
             </div>
@@ -103,6 +97,7 @@ const About = () => {
           <Skill />
           <Experience />
           <Education />
+          <Certifications />
         </Layout>
       </main>
     </>

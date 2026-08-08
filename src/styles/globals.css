@@ -1,3 +1,104 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Visible keyboard focus for every interactive element */
+  :focus-visible {
+    outline: 2px solid #B63E96;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: #B63E96;
+    color: #f7f7f5;
+  }
+  .dark ::selection {
+    background-color: #B63E96;
+    color: #0f0f10;
+  }
+
+  /* Skip-to-content link — visible only when focused */
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    background: #0f0f10;
+    color: #f7f7f5;
+    padding: 0.6rem 1.1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+  .dark .skip-link {
+    background: #f7f7f5;
+    color: #0f0f10;
+  }
+
+  /* Native <select> dropdowns — keep the option list readable in both themes.
+     Utilities like bg-transparent would otherwise leave the popup with the
+     browser default (light) background while text is forced light. */
+  select {
+    color-scheme: light;
+  }
+  select option {
+    background-color: #f7f7f5;
+    color: #0f0f10;
+  }
+  .dark select {
+    color-scheme: dark;
+  }
+  .dark select option {
+    background-color: #0f0f10;
+    color: #f7f7f5;
+  }
+  .dark select option:checked,
+  .dark select option:hover {
+    background-color: #2a2a2d;
+  }
+
+  /* Nicer default scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #B63E96 transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #B63E96;
+    border-radius: 9999px;
+  }
+}
+
+/* Respect users who prefer reduced motion — neutralize everything */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
