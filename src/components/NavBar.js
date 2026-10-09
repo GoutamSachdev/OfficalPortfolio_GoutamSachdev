@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Logo from '@/components/Logo'
-import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon } from './Icon'
+import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon, DownloadIcon } from './Icon'
 import { AnimatePresence, motion } from "framer-motion"
 import SocialButton from './SocialButton'
 import useSwitcherTheme from './hooks/useSwitcherTheme'
@@ -51,7 +51,8 @@ const ThemeToggle = ({ mode, setMode, className = "" }) => (
   <button
     onClick={() => setMode(mode === "dark" ? "light" : "dark")}
     aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
-    className={`flex items-center justify-center rounded-full p-1 transition-colors duration-300
+    className={`relative flex items-center justify-center rounded-full p-1 transition-colors duration-300
+      after:absolute after:-inset-1.5 after:rounded-full after:content-['']
       ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"} ${className}`}
   >
     {mode === "dark"
@@ -115,10 +116,11 @@ const NavBar = () => {
   return (
     <header className='w-full px-4 sm:px-8 md:px-16 lg:px-20 py-6 font-medium flex items-center justify-between dark:text-light relative z-40'>
 
-      {/* Hamburger button - mobile only */}
+      {/* Hamburger button - mobile only. Sized to a 44x44 touch target; the
+          negative margin keeps the bars optically aligned with the page gutter. */}
       <button
         onClick={toggle}
-        className="flex flex-col justify-center items-center lg:hidden z-50"
+        className="flex flex-col justify-center items-center lg:hidden z-50 w-11 h-11 -ml-2.5"
         aria-label="Toggle Menu"
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
@@ -133,12 +135,25 @@ const NavBar = () => {
 
       {/* Desktop Nav */}
       <div className='w-full hidden lg:flex justify-between items-center'>
-        <nav aria-label='Primary'>
+        <nav aria-label='Primary' className='flex items-center'>
           <CustomLink href='/' title="Home" className='mr-4' />
           <CustomLink href='/about' title="About" className='mx-4' />
           <CustomLink href='/projects' title="Projects" className='mx-4' />
+          <CustomLink href='/skills' title="Skills" className='mx-4' />
           <CustomLink href='/articles' title="Articles" className='mx-4' />
           <CustomLink href='/contact' title="Contact" className='ml-4' />
+          <a
+            href='/Goutam-Sachdev.pdf'
+            target='_blank'
+            rel='noopener noreferrer'
+            download
+            className='ml-5 inline-flex items-center gap-1.5 rounded-lg border-2 border-solid border-line px-3 py-1
+            text-sm font-semibold transition-all duration-300 hover:border-primary hover:text-primary
+            active:scale-95 dark:border-lineDark dark:hover:border-primaryDark dark:hover:text-primaryDark'
+          >
+            <DownloadIcon className='w-4' />
+            Résumé
+          </a>
         </nav>
 
         <nav className='flex items-center justify-center flex-wrap' aria-label='Social and theme'>
@@ -181,8 +196,8 @@ const NavBar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className='fixed inset-0 z-50 flex flex-col items-center justify-center
-              bg-light dark:bg-dark px-6 lg:hidden'
+              className='fixed inset-0 z-50 flex flex-col
+              bg-light dark:bg-dark lg:hidden'
             >
               <button
                 ref={closeBtnRef}
@@ -197,22 +212,45 @@ const NavBar = () => {
                 </span>
               </button>
 
-              <div className='flex flex-col items-center justify-center'>
-                <CustomMobileLink href='/' title="Home" close={close} />
-                <CustomMobileLink href='/about' title="About" close={close} />
-                <CustomMobileLink href='/projects' title="Projects" close={close} />
-                <CustomMobileLink href='/articles' title="Articles" close={close} />
-                <CustomMobileLink href='/contact' title="Contact" close={close} />
-              </div>
+              {/* Scrolls rather than clipping when the viewport is short — every
+                  landscape phone. `m-auto` centres the block when there is room
+                  and still lets it scroll when there isn't; `justify-center`
+                  would cut the top off once the content overflowed. */}
+              <div className='flex flex-1 flex-col items-center overflow-y-auto px-6 py-20'>
+                <div className='m-auto flex flex-col items-center'>
+                  <div className='flex flex-col items-center justify-center'>
+                    <CustomMobileLink href='/' title="Home" close={close} />
+                    <CustomMobileLink href='/about' title="About" close={close} />
+                    <CustomMobileLink href='/projects' title="Projects" close={close} />
+                    <CustomMobileLink href='/skills' title="Skills" close={close} />
+                    <CustomMobileLink href='/articles' title="Articles" close={close} />
+                    <CustomMobileLink href='/contact' title="Contact" close={close} />
+                    <a
+                      href='/Goutam-Sachdev.pdf'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      download
+                      onClick={close}
+                      className='mt-3 inline-flex items-center gap-2 rounded-lg border-2 border-solid border-line
+                      px-5 py-2 text-lg font-semibold text-dark transition-all duration-300
+                      hover:border-primary hover:text-primary active:scale-95
+                      dark:border-lineDark dark:text-light dark:hover:border-primaryDark dark:hover:text-primaryDark'
+                    >
+                      <DownloadIcon className='w-5' />
+                      Résumé
+                    </a>
+                  </div>
 
-              <div className='flex items-center justify-center flex-wrap mt-8 gap-3'>
-                <SocialButton href='https://github.com/GoutamSachdev' label='GitHub' size='md'>
-                  <GithubIcon />
-                </SocialButton>
-                <SocialButton href='https://www.linkedin.com/in/goutam-sachdev-978435190/' label='LinkedIn' size='md'>
-                  <LinkedInIcon />
-                </SocialButton>
-                <ThemeToggle mode={mode} setMode={setMode} className="ml-1 rounded-full border border-solid border-line dark:border-lineDark" />
+                  <div className='flex items-center justify-center flex-wrap mt-8 gap-3'>
+                    <SocialButton href='https://github.com/GoutamSachdev' label='GitHub' size='md'>
+                      <GithubIcon />
+                    </SocialButton>
+                    <SocialButton href='https://www.linkedin.com/in/goutam-sachdev-978435190/' label='LinkedIn' size='md'>
+                      <LinkedInIcon />
+                    </SocialButton>
+                    <ThemeToggle mode={mode} setMode={setMode} className="ml-1 rounded-full border border-solid border-line dark:border-lineDark" />
+                  </div>
+                </div>
               </div>
             </motion.nav>
           </>

@@ -24,6 +24,15 @@ const personSchema = {
     "@type": "CollegeOrUniversity",
     name: "Sukkur IBA University",
   },
+  worksFor: {
+    "@type": "Organization",
+    name: "Techno Channels",
+  },
+  // Remote availability, expressed in schema.org's own vocabulary.
+  seeks: {
+    "@type": "Demand",
+    name: "Remote AI engineering roles (worldwide), or on-site with relocation",
+  },
   sameAs: [
     "https://www.linkedin.com/in/goutam-sachdev-978435190",
     "https://github.com/GoutamSachdev",
@@ -31,15 +40,25 @@ const personSchema = {
   knowsAbout: [
     "Generative AI",
     "Retrieval-Augmented Generation",
+    "Graph RAG",
     "Large Language Models",
     "Agentic AI",
+    "Multi-Agent Systems",
+    "Prompt Engineering",
     "Python",
-    "Django",
     "FastAPI",
+    "Django",
+    "Celery",
+    "PostgreSQL",
+    "pgvector",
     "Next.js",
     "React",
     "LangChain",
     "LangGraph",
+    "CrewAI",
+    "LlamaIndex",
+    "LiveKit",
+    "PyTorch",
     "Computer Vision",
   ],
 };

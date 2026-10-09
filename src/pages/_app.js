@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
+import ScrollProgress from '@/components/ScrollProgress'
 import '@/styles/globals.css'
 import { Montserrat } from "next/font/google"
 import Head from 'next/head'
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <div className={`${montserrat.variable} font-mont bg-light dark:bg-dark w-full min-h-screen`}>
        <a href="#content" className="skip-link">Skip to content</a>
+       <ScrollProgress />
        <NavBar />
         <AnimatePresence mode="wait">
           <motion.div

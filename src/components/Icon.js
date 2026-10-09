@@ -1,5 +1,13 @@
 import * as React from "react";
 
+// Icons fill their parent by default (`w-full`), which is what SocialButton
+// relies on: it wraps each icon in a fixed-size span. But a caller passing an
+// explicit size — `className="w-4"` — has to win instead. Both classes have
+// equal specificity and Tailwind emits `.w-full` *after* `.w-4` in the sheet,
+// so without this check the explicit size would be silently overridden and the
+// icon would stretch to its container.
+const fillUnlessSized = (className = "") => (/(^|\s)w-/.test(className) ? "" : "w-full ");
+
 
 
 export const GithubIcon = ({ className, ...rest }) => (
@@ -450,6 +458,30 @@ export const CircularText = ({ className, ...rest }) => (
   </svg>
 );
 
+// Download tray with an arrow — used by the certificate cards.
+export const DownloadIcon = ({ className, ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...rest}
+    className={`${fillUnlessSized(className)}h-auto ${className}`}
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 3v11m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+    />
+  </svg>
+);
+
 export const LinkArrow = ({ className, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -458,7 +490,7 @@ export const LinkArrow = ({ className, ...rest }) => (
     viewBox="0 0 24 24"
     aria-hidden="true"
     focusable="false"
-    className={`w-full h-auto ${className}`}
+    className={`${fillUnlessSized(className)}h-auto ${className}`}
     {...rest}
   >
     <path fill="none" d="M0 0h24v24H0z" />

@@ -7,6 +7,7 @@ import AnimatedText from "@/components/AnimatedText";
 import { motion } from "framer-motion";
 import { AnimatedArrow } from "@/components/Icon";
 import HireJob from "@/components/HireJob";
+import PathGame from "@/components/PathGame";
 import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg'
 
 // components/TypewriterComponent.js
@@ -21,9 +22,10 @@ const phrases = [
 ];
 
 const MARQUEE = [
-  "Python", "LangChain", "LangGraph", "CrewAI", "RAG", "LlamaIndex",
-  "FastAPI", "Django", "Next.js", "React", "PostgreSQL", "LiveKit",
-  "OpenAI", "Deep Lake", "ChromaDB", "Computer Vision", "Agentic AI"
+  "Python", "LangChain", "LangGraph", "CrewAI", "RAG", "Graph RAG", "LlamaIndex",
+  "FastAPI", "Django", "Next.js", "React", "PostgreSQL", "pgvector", "Redis",
+  "Celery", "LiveKit", "OpenAI SDK", "PyTorch", "TensorFlow", "Docker", "MongoDB",
+  "Pinecone", "ChromaDB", "n8n", "Computer Vision", "Agentic AI"
 ];
 
 const TypewriterComponent = ({ className }) => {
@@ -68,8 +70,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Goutam Sachdev | Gen-AI & ML Developer"
-        description="Goutam Sachdev — AI Software Engineer building production AI: LLM chatbots, agentic automation, RAG systems, voice agents, and full-stack AI web apps in Python, FastAPI, Django, LangChain, LangGraph, and Next.js."
+        title="Goutam Sachdev | AI Engineer — LLM, RAG & Voice AI"
+        description="Goutam Sachdev — AI Software Engineer building production AI: LLM chatbots, agentic automation, RAG systems, voice agents, and full-stack AI web apps in Python, FastAPI, Django, LangChain, LangGraph, and Next.js. Open to remote roles worldwide."
         path="/"
       />
       <main id="content" className="flex items-center text-dark w-full min-h-screen dark:text-light relative overflow-hidden">
@@ -98,6 +100,17 @@ export default function Home() {
               />
             </div>
             <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start self-center">
+              <div
+                className="mb-4 inline-flex items-center gap-2 rounded-full border border-solid border-line
+                bg-light/70 px-3 py-1.5 text-xs sm:text-sm font-semibold text-dark/80
+                shadow-soft dark:border-lineDark dark:bg-dark/60 dark:text-light/80"
+              >
+                <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 motion-safe:animate-ping" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+                </span>
+                Open to remote roles worldwide · open to relocation
+              </div>
               <div className="container mx-auto p-4 lg:pl-10">
                 <TypewriterComponent className="text-center lg:text-left" />
               </div>
@@ -120,13 +133,13 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                I&apos;m passionate about writing code that brings ideas to life,
-                creating practical solutions that captivate users and appeal to
-                customers.
+                AI Software Engineer shipping production LLM, RAG, and voice-AI systems.
+                Based in Karachi, I work remotely with teams worldwide and I&apos;m open
+                to relocation.
               </motion.p>
               <div className="flex items-center self-center lg:self-start mt-2 gap-4">
                 <Link
-                  href="/GOUTAM-SACHDEV.pdf"
+                  href="/Goutam-Sachdev.pdf"
                   target={"_blank"}
                   className="group flex items-center bg-dark text-light p-2 px-4 sm:p-2.5 sm:px-6
                   rounded-lg text-base sm:text-lg font-semibold shadow-soft hover:shadow-cardHover
@@ -149,6 +162,21 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Trace the road — the one interactive thing on the page. */}
+          <section className="mt-20 lg:mt-28 w-full" aria-labelledby="path-heading">
+            <h2
+              id="path-heading"
+              className="text-center text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-dark via-primary to-primaryDark dark:from-light dark:via-primary dark:to-primaryDark bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x"
+            >
+              Find the path
+            </h2>
+            <p className="mx-auto mb-8 max-w-xl text-center text-sm font-medium text-dark/60 dark:text-light/60">
+              A road, drawn by hand. Move your cursor along it and the pen follows —
+              no clicking, and no way to go wrong.
+            </p>
+            <PathGame />
+          </section>
 
           {/* What I do — keyword-rich services strip */}
           <section className="mt-20 lg:mt-28 w-full">
@@ -193,7 +221,9 @@ export default function Home() {
         </Layout>
         <HireJob />
 
-        <div className="absolute right-4 sm:right-8 bottom-4 sm:bottom-8 inline-block w-16 sm:w-24" aria-hidden="true">
+        {/* Decoration only: held back below `sm`, where it would sit on top of
+            the tech marquee. */}
+        <div className="absolute right-4 sm:right-8 bottom-4 sm:bottom-8 hidden sm:inline-block w-24" aria-hidden="true">
           <Image src={lightBulb} alt="" className="w-full h-auto" />
         </div>
       </main>

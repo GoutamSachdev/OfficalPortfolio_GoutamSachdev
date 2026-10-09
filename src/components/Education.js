@@ -6,9 +6,9 @@ import Lilcon from '../components/Lilcon'
 const Detail = ({ type, time, place, info }) => {
     const ref = useRef(null)
     return (
-        <li ref={ref} className='my-8 first:mt-0 last:mb-0 w-full sm:w-[60%] mx-auto flex flex-col items-center justify-between'>
+        <li ref={ref} className='my-8 first:mt-0 last:mb-0 w-full sm:w-[60%] mx-auto flex flex-col items-start sm:items-center justify-between'>
             <Lilcon reference={ref} />
-            <motion.div initial={{ y: 50 }}
+            <motion.div initial={{ y: 50 }} className='pl-20 sm:pl-0'
                 whileInView={{ y: 0 }}
                 transition={{ duration: 0.5, type: "spring" }}>
                 <h3 className='capitalize font-bold text-2xl dark:text-light'>{type}</h3>
@@ -39,10 +39,10 @@ const Education = () => {
                     style={{ scaleY: scrollYProgress }}
                 />
                 <ul className='w-full flex flex-col items-start justify-between ml-4'>
-                    <Detail type={"Bachelor of Science in Computer Science"}
-                        time={'2020-2024 | 3.10 / 4.00'}
+                    <Detail type={"Bachelor of Computer Science"}
+                        time={'Sep 2020 - Aug 2024 | CGPA 3.01 / 4.00'}
                         place={"Sukkur IBA University"}
-                        info={'Relevant courses included Data Structures and Algorithms, Computer Architecture and Assembly, Computer Vision and Artificial Intelligence.'}
+                        info={'Relevant coursework: Artificial Intelligence, Computer Vision, Web Engineering, and Data Structures.'}
                     />
                 </ul>
             </div>

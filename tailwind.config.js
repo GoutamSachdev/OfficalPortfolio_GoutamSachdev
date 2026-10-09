@@ -29,6 +29,9 @@ module.exports = {
         spin: {
           to: { transform: "rotate(360deg)" }
         },
+        "spin-reverse": {
+          to: { transform: "rotate(-360deg)" }
+        },
         "gradient-x": {
           "0%, 100%": { "background-position": "0% 50%" },
           "50%": { "background-position": "100% 50%" }
@@ -36,12 +39,34 @@ module.exports = {
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" }
+        },
+        /* Soft idle pulse for the skills core — scale only, so it never
+           shifts layout or nudges neighbouring pills. */
+        breathe: {
+          "0%, 100%": { transform: "scale(1)", opacity: "0.55" },
+          "50%": { transform: "scale(1.18)", opacity: "0.15" }
+        },
+        /* Glow travelling around the core ring — opacity only, so it fades in
+           and out instead of snapping back to the start each cycle. */
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.35" },
+          "50%": { opacity: "0.9" }
         }
       },
       animation: {
         'spin-slow': 'spin 8s linear infinite',
         'gradient-x': 'gradient-x 6s ease infinite',
-        marquee: 'marquee 28s linear infinite'
+        marquee: 'marquee 28s linear infinite',
+        // Orbit decorations: slow counter-rotating rings (pure decoration —
+        // no text rides on them, so nothing can tilt or drift off-centre).
+        // Four different periods so the layers visibly slide past each other
+        // rather than looking locked together.
+        orbit: 'spin 46s linear infinite',
+        'orbit-reverse': 'spin-reverse 62s linear infinite',
+        'orbit-fast': 'spin 22s linear infinite',
+        'orbit-slower': 'spin 96s linear infinite',
+        breathe: 'breathe 5s ease-in-out infinite',
+        'glow-pulse': 'glow-pulse 4.5s ease-in-out infinite'
       },
       backgroundImage: {
         circularLight: 'repeating-radial-gradient(rgba(0,0,0,0.04) 2px, #f7f7f5 6px, #f7f7f5 100px)',

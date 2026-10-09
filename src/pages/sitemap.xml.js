@@ -1,7 +1,7 @@
 const SITE_URL = "https://goutam-sachdev.vercel.app";
 
 // Static routes for a personal portfolio. Add new top-level pages here.
-const ROUTES = ["/", "/about", "/projects", "/articles", "/contact"];
+const ROUTES = ["/", "/about", "/projects", "/skills", "/articles", "/contact"];
 
 export const getServerSideProps = async ({ res }) => {
   const today = new Date().toISOString();

@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import AnimatedText from "@/components/AnimatedText";
 import Seo from "@/components/Seo";
 import SocialButton from "@/components/SocialButton";
-import { GithubIcon, LinkedInIcon } from "@/components/Icon";
+import { GithubIcon, LinkedInIcon, DownloadIcon, AnimatedArrow } from "@/components/Icon";
 import { motion } from "framer-motion";
 
 const STATUS = { IDLE: "idle", SENDING: "sending", SENT: "sent", ERROR: "error" }
@@ -49,16 +49,19 @@ export default function Contact() {
     }
   }
 
+  // No `focus:outline-none` here: it would out-specify the global
+  // `:focus-visible` outline in globals.css and leave keyboard users with
+  // only a border-colour change as their focus cue.
   const inputClass =
     "w-full rounded-lg bg-transparent border-2 border-solid border-line p-2.5 text-base " +
-    "font-medium text-dark placeholder:text-muted/60 focus:border-primary focus:outline-none " +
+    "font-medium text-dark placeholder:text-muted/60 focus:border-primary " +
     "transition-colors dark:border-lineDark dark:text-light dark:placeholder:text-light/40 dark:focus:border-primaryDark"
 
   return (
     <>
       <Seo
         title="Contact"
-        description="Contact Goutam Sachdev — AI Software Engineer available for AI chatbot, RAG, voice-AI, and full-stack AI web app work. Send a message via the form or reach out on LinkedIn and GitHub."
+        description="Contact Goutam Sachdev — AI Software Engineer available for AI chatbot, RAG, voice-AI, and full-stack AI web app work. Open to remote roles worldwide and to relocation. Send a message via the form or reach out on LinkedIn and GitHub."
         path="/contact"
       />
       <main id="content" className="w-full min-h-screen flex items-center text-dark dark:text-light">
@@ -71,6 +74,13 @@ export default function Contact() {
               <p className="text-base text-dark/70 dark:text-light/70">
                 Need an AI chatbot, a RAG system, a Gen-AI feature, or a full-stack AI web app built? Pick the service in the form, add your email, and tell me about it — I&apos;ll reply to your inbox.
               </p>
+              <div className="inline-flex items-center gap-2 self-start rounded-full border border-solid border-line bg-light/70 px-3 py-1.5 text-xs sm:text-sm font-semibold shadow-soft dark:border-lineDark dark:bg-dark/60">
+                <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 motion-safe:animate-ping" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+                </span>
+                Available now · remote worldwide
+              </div>
               <div className="flex flex-col gap-4 text-base font-medium">
                 <div>
                   <span className="block text-xs uppercase tracking-wide text-dark/50 dark:text-light/50">Email</span>
@@ -82,8 +92,25 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className="block text-xs uppercase tracking-wide text-dark/50 dark:text-light/50">Location</span>
-                  Karachi, Pakistan
+                  Karachi, Pakistan · PKT (UTC+5)
+                  <span className="block text-sm text-dark/60 dark:text-light/60">
+                    Open to remote worldwide and to relocation
+                  </span>
                 </div>
+                <a
+                  href="/Goutam-Sachdev.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="group inline-flex items-center gap-2 self-start rounded-lg bg-dark text-light px-5 py-2.5
+                  text-base font-semibold shadow-soft hover:shadow-cardHover transition-all duration-300
+                  hover:-translate-y-0.5 active:scale-95 border-2 border-solid border-transparent hover:border-dark
+                  dark:bg-light dark:text-dark dark:hover:border-light"
+                >
+                  <DownloadIcon className="w-5 transition-transform duration-300 group-hover:translate-y-0.5" />
+                  Download résumé
+                  <AnimatedArrow className="w-5" />
+                </a>
                 <div className="flex items-center gap-3 mt-1">
                   <SocialButton href="https://www.linkedin.com/in/goutam-sachdev-978435190" label="LinkedIn">
                     <LinkedInIcon />
