@@ -5,7 +5,7 @@ import Seo from "@/components/Seo";
 import proPic from "../../public/images/profile/developer-pic-1.png";
 import AnimatedText from "@/components/AnimatedText";
 import { motion } from "framer-motion";
-import { AnimatedArrow } from "@/components/Icon";
+import { AnimatedArrow, AgentIcon, RetrievalIcon, VoiceIcon, StackIcon } from "@/components/Icon";
 import HireJob from "@/components/HireJob";
 import PathGame from "@/components/PathGame";
 import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg'
@@ -150,12 +150,14 @@ export default function Home() {
                 >
                   Resume <AnimatedArrow className={"w-5 sm:w-6 ml-1"} />
                 </Link>
+                {/* Goes to the contact page rather than opening a mail client,
+                    so the visitor sees the form, availability and socials
+                    instead of a hand-off to their mail app. */}
                 <Link
                   className="text-base sm:text-lg font-medium capitalize text-dark underline
                   underline-offset-4 decoration-primary decoration-2 hover:text-primary transition-colors
                   dark:text-light dark:hover:text-primaryDark"
-                  href="mailto:ai.goutamsachdev@gmail.com"
-                  target={"_blank"}
+                  href="/contact"
                 >
                   Contact
                 </Link>
@@ -185,10 +187,10 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { t: "AI Chatbots & Agents", d: "LLM-powered support & sales chatbots with LangChain, LangGraph, and CrewAI — RAG-backed, <2s latency, AI-to-human escalation." },
-                { t: "RAG & Knowledge Systems", d: "Hybrid retrieval with LlamaIndex, Graph RAG, Deep Lake, and vector stores for accurate, source-grounded answers." },
-                { t: "Voice AI", d: "Real-time voice agents with LiveKit, Twilio, Whisper STT, and Cartesia TTS — natural, low-latency conversations." },
-                { t: "Full-stack AI Web Apps", d: "End-to-end products with Next.js, FastAPI, Django, and PostgreSQL — from frontend to ML backend." },
+                { t: "AI Chatbots & Agents", d: "LLM-powered support & sales chatbots with LangChain, LangGraph, and CrewAI — RAG-backed, <2s latency, AI-to-human escalation.", Icon: AgentIcon },
+                { t: "RAG & Knowledge Systems", d: "Hybrid retrieval with LlamaIndex, Graph RAG, Deep Lake, and vector stores for accurate, source-grounded answers.", Icon: RetrievalIcon },
+                { t: "Voice AI", d: "Real-time voice agents with LiveKit, Twilio, Whisper STT, and Cartesia TTS — natural, low-latency conversations.", Icon: VoiceIcon },
+                { t: "Full-stack AI Web Apps", d: "End-to-end products with Next.js, FastAPI, Django, and PostgreSQL — from frontend to ML backend.", Icon: StackIcon },
               ].map((s) => (
                 <motion.div
                   key={s.t}
@@ -198,6 +200,11 @@ export default function Home() {
                   transition={{ duration: 0.4 }}
                   className="rounded-2xl border border-solid border-line bg-light/70 p-6 shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-1 dark:bg-dark/60 dark:border-lineDark"
                 >
+                  {/* The icon takes `w-full h-auto` from Icon.js, so this span
+                      sizes it — the same arrangement SocialButton uses. */}
+                  <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-solid border-primary/20 bg-primary/10 p-2.5 text-primary dark:text-primaryDark">
+                    <s.Icon />
+                  </span>
                   <h3 className="text-lg font-bold mb-2 dark:text-light">{s.t}</h3>
                   <p className="text-sm font-medium text-dark/70 dark:text-light/70">{s.d}</p>
                 </motion.div>

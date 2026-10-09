@@ -505,6 +505,114 @@ export const LinkArrow = ({ className, ...rest }) => (
   </svg>
 );
 
+// ---- Section marks for the "What I build" cards -------------------------
+// All four share the house style of the icons above: a 24x24 box, no fill,
+// `currentColor` strokes, round caps and joins, so they take their colour from
+// whatever they sit in and stay legible in both themes.
+
+// Robot head with an antenna — the AI agent.
+export const AgentIcon = ({ className, ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...rest}
+    className={`${fillUnlessSized(className)}h-auto ${className}`}
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+      <path d="M12 3.4V7" />
+      <rect x="4" y="7" width="16" height="12" rx="3" />
+      <path d="M2 11.5v3M22 11.5v3" />
+      <path d="M9.5 16.4h5" />
+    </g>
+    <g fill="currentColor">
+      <circle cx="12" cy="2.2" r="1.4" />
+      <circle cx="9.3" cy="12.6" r="1.2" />
+      <circle cx="14.7" cy="12.6" r="1.2" />
+    </g>
+  </svg>
+);
+
+// A magnifier whose lens holds a small node graph — search over a knowledge
+// graph, which is what retrieval actually is.
+export const RetrievalIcon = ({ className, ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...rest}
+    className={`${fillUnlessSized(className)}h-auto ${className}`}
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+      <circle cx="10.5" cy="10.5" r="6.6" />
+      <path d="M15.3 15.3 21 21" />
+    </g>
+    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={1.4} opacity="0.9">
+      <path d="M8.2 8.6 12.8 9.1M8.9 9.7l1.4 3.1M12.3 9.8l-1.1 2.9" />
+    </g>
+    <g fill="currentColor">
+      <circle cx="8.2" cy="8.6" r="1.1" />
+      <circle cx="12.8" cy="9.1" r="1.1" />
+      <circle cx="10.3" cy="12.8" r="1.1" />
+    </g>
+  </svg>
+);
+
+// Microphone — voice agents.
+export const VoiceIcon = ({ className, ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...rest}
+    className={`${fillUnlessSized(className)}h-auto ${className}`}
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+      <rect x="9" y="2.5" width="6" height="11" rx="3" />
+      <path d="M5.5 11.5a6.5 6.5 0 0 0 13 0" />
+      <path d="M12 18v3.5M8.5 21.5h7" />
+    </g>
+  </svg>
+);
+
+// A browser window with angle brackets in it — the full-stack build.
+export const StackIcon = ({ className, ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...rest}
+    className={`${fillUnlessSized(className)}h-auto ${className}`}
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+      <rect x="2.5" y="4" width="19" height="16" rx="3" />
+      <path d="M2.5 8.5h19" />
+      <path d="M9.5 12.5 7 15l2.5 2.5M14.5 12.5 17 15l-2.5 2.5" />
+    </g>
+    <g fill="currentColor">
+      <circle cx="5.6" cy="6.3" r="0.9" />
+      <circle cx="8.1" cy="6.3" r="0.9" />
+      <circle cx="10.6" cy="6.3" r="0.9" />
+    </g>
+  </svg>
+);
+
 // External-link arrow that nudges up-right on hover. Parent must carry `group`.
 export const AnimatedArrow = ({ className = "" }) => (
   <LinkArrow

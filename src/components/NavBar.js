@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Logo from '@/components/Logo'
-import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon, DownloadIcon } from './Icon'
+import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon } from './Icon'
 import { AnimatePresence, motion } from "framer-motion"
 import SocialButton from './SocialButton'
 import useSwitcherTheme from './hooks/useSwitcherTheme'
@@ -142,18 +142,6 @@ const NavBar = () => {
           <CustomLink href='/skills' title="Skills" className='mx-4' />
           <CustomLink href='/articles' title="Articles" className='mx-4' />
           <CustomLink href='/contact' title="Contact" className='ml-4' />
-          <a
-            href='/Goutam-Sachdev.pdf'
-            target='_blank'
-            rel='noopener noreferrer'
-            download
-            className='ml-5 inline-flex items-center gap-1.5 rounded-lg border-2 border-solid border-line px-3 py-1
-            text-sm font-semibold transition-all duration-300 hover:border-primary hover:text-primary
-            active:scale-95 dark:border-lineDark dark:hover:border-primaryDark dark:hover:text-primaryDark'
-          >
-            <DownloadIcon className='w-4' />
-            Résumé
-          </a>
         </nav>
 
         <nav className='flex items-center justify-center flex-wrap' aria-label='Social and theme'>
@@ -225,20 +213,6 @@ const NavBar = () => {
                     <CustomMobileLink href='/skills' title="Skills" close={close} />
                     <CustomMobileLink href='/articles' title="Articles" close={close} />
                     <CustomMobileLink href='/contact' title="Contact" close={close} />
-                    <a
-                      href='/Goutam-Sachdev.pdf'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      download
-                      onClick={close}
-                      className='mt-3 inline-flex items-center gap-2 rounded-lg border-2 border-solid border-line
-                      px-5 py-2 text-lg font-semibold text-dark transition-all duration-300
-                      hover:border-primary hover:text-primary active:scale-95
-                      dark:border-lineDark dark:text-light dark:hover:border-primaryDark dark:hover:text-primaryDark'
-                    >
-                      <DownloadIcon className='w-5' />
-                      Résumé
-                    </a>
                   </div>
 
                   <div className='flex items-center justify-center flex-wrap mt-8 gap-3'>
