@@ -30,3 +30,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# python bytecode (scripts/make-icons.py)
+__pycache__/

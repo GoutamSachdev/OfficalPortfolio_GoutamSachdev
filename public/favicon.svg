@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Dark rounded tile with a magenta ring. One rect does both: the stroke is
+       centred on the 4.5..95.5 box, so its outer edge lands exactly
+       on 0..100 and its outer corner radius is 21.5 + 4.5 = 26, matching the
+       fill. That leaves a 9-unit band of brand colour, which is what keeps the
+       icon legible on a dark tab strip where a plain dark tile would vanish. -->
+  <rect x="4.5" y="4.5" width="91.0" height="91.0" rx="21.5"
+        fill="#0f0f10" stroke="#B63E96" stroke-width="9"/>
+
+  <!-- "GS", monoline, matching the nav logo. The G's ellipse is narrowed so the
+       two letters balance; its arc runs 305 degrees, leaving the opening and
+       crossbar that make it a G rather than an O. -->
+  <g fill="none" stroke="#f7f7f5" stroke-width="8.28"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42.78 34.55 A11.96 18.86 0 1 0 47.88 50.00 L35.00 50.00"/>
+    <path d="M74.07 41.69 A8.10 8.10 0 1 0 66.10 51.20"/>
+    <path d="M66.10 48.80 A8.10 8.10 0 1 1 58.13 58.31"/>
+  </g>
+</svg>
